@@ -22,5 +22,20 @@ namespace ECommerce.Business.Concrete
         {
            return _productDal.GetAll();
         }
+
+        public void CreateProduct(Product product)
+        {
+            _productDal.Create(product);
+        }
+
+        public void UpdateProduct(Product product)
+        {
+            _productDal.Update(product);
+        }
+
+        public void DeleteProduct(Product product)
+        {
+            _productDal.Delete(product);
+        }
     }
 }

@@ -40,8 +40,12 @@ namespace ECommerce.Api
             services.AddDbContext<ApplicationDbContext>();
 
             services.AddScoped<IProductDal, ProductDal>();
+            services.AddScoped<IBasketDal, BasketDal>();
+            services.AddScoped<IOrderDal, OrderDal>();
 
             services.AddScoped<IProductService, ProductManager>();
+            services.AddScoped<IBasketService, BasketManager>();
+            services.AddScoped<IOrderService, OrderManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

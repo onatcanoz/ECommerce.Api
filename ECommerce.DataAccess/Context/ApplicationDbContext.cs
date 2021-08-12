@@ -16,9 +16,23 @@ namespace ECommerce.DataAccess.Context
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Product>()
+                .HasOne(product => product.Basket)
+                .WithMany(basket => basket.Products)
+                .HasForeignKey(product => product.BasketId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Product>()
+                .HasOne(product => product.Order)
+                .WithMany(order => order.Products)
+                .HasForeignKey(product => product.OrderId)
+                .OnDelete(DeleteBehavior.NoAction);
+
             base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
     }
 }
